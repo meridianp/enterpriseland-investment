@@ -1,0 +1,1 @@
+# Management commands for market_intelligence app

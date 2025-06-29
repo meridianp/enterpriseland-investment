@@ -1,0 +1,3 @@
+"""
+Deal app tests.
+"""

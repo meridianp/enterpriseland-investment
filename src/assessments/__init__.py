@@ -1,0 +1,1 @@
+# Assessments app - models will be imported when needed

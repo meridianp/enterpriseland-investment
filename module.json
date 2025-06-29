@@ -1,0 +1,144 @@
+{
+  "id": "enterpriseland-investment",
+  "name": "EnterpriseLand Investment Management",
+  "version": "1.0.0",
+  "description": "Comprehensive investment lifecycle management module",
+  "author": {
+    "name": "EnterpriseLand",
+    "email": "support@enterpriseland.com",
+    "website": "https://enterpriseland.com"
+  },
+  "license": "Proprietary",
+  "platform": {
+    "minVersion": "1.0.0",
+    "maxVersion": "2.0.0"
+  },
+  "dependencies": {
+    "platform-core": ">=1.0.0"
+  },
+  "permissions": {
+    "required": [
+      "business_objects.create",
+      "business_objects.read",
+      "business_objects.update",
+      "business_objects.delete",
+      "workflows.execute",
+      "agents.execute",
+      "files.upload",
+      "notifications.send"
+    ],
+    "optional": [
+      "external_api.call",
+      "email.send",
+      "storage.write"
+    ]
+  },
+  "resources": {
+    "limits": {
+      "memory": "1GB",
+      "cpu": 2.0,
+      "storage": "5GB",
+      "api_rate": 5000
+    },
+    "requests": {
+      "memory": "512MB",
+      "cpu": 1.0
+    }
+  },
+  "components": {
+    "models": [
+      {
+        "name": "Assessment",
+        "file": "src/assessments/models.py",
+        "schema": "AssessmentSchema"
+      },
+      {
+        "name": "DevelopmentPartner",
+        "file": "src/assessments/models.py",
+        "schema": "DevelopmentPartnerSchema"
+      },
+      {
+        "name": "Lead",
+        "file": "src/leads/models.py",
+        "schema": "LeadSchema"
+      },
+      {
+        "name": "Deal",
+        "file": "src/deals/models.py",
+        "schema": "DealSchema"
+      }
+    ],
+    "workflows": [
+      {
+        "name": "assessment_workflow",
+        "file": "src/assessments/workflows.py",
+        "class": "AssessmentWorkflow"
+      },
+      {
+        "name": "lead_scoring_workflow",
+        "file": "src/leads/workflows.py",
+        "class": "LeadScoringWorkflow"
+      },
+      {
+        "name": "deal_management_workflow",
+        "file": "src/deals/workflows.py",
+        "class": "DealManagementWorkflow"
+      }
+    ],
+    "api": [
+      {
+        "path": "/api/investment/v1/*",
+        "file": "src/api/urls.py"
+      }
+    ],
+    "ui": [
+      {
+        "type": "dashboard_widget",
+        "file": "src/ui/widgets/investment_dashboard.js"
+      }
+    ]
+  },
+  "configuration": {
+    "schema": {
+      "hubspot_api_key": {
+        "type": "string",
+        "description": "HubSpot API key for CRM integration",
+        "required": false
+      },
+      "enable_lead_scoring": {
+        "type": "boolean",
+        "default": true
+      },
+      "assessment_workflow_enabled": {
+        "type": "boolean",
+        "default": true
+      }
+    }
+  },
+  "marketplace": {
+    "category": "investment-management",
+    "tags": [
+      "investment",
+      "due-diligence",
+      "lead-management",
+      "deal-flow",
+      "crm"
+    ],
+    "screenshots": [
+      {
+        "url": "static/screenshots/dashboard.png",
+        "caption": "Investment Dashboard"
+      },
+      {
+        "url": "static/screenshots/assessments.png",
+        "caption": "Assessment Management"
+      }
+    ]
+  },
+  "i18n": {
+    "defaultLocale": "en",
+    "supportedLocales": [
+      "en"
+    ]
+  }
+}

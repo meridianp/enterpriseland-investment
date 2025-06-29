@@ -1,0 +1,1 @@
+# Management module for market_intelligence app
